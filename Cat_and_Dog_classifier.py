@@ -1,5 +1,5 @@
 #%%
-import numpy as numpy
+import numpy as np
 import matplotlib.pyplot as plt
 import os
 import cv2
@@ -29,3 +29,35 @@ def create_training_data():
 create_training_data()
 #%%
 print(len(training_data))
+
+# %%
+import random
+
+random.shuffle(training_data)
+
+# %%
+
+X = []
+y = []
+
+for features, label in training_data:
+    X.append(features)
+    y.append(label)
+
+X = np.array(X).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+
+# %%
+import pickle
+
+pickle_out = open("data/kaggle_cats_and_dogs/processed_data/X.pickle", "wb")
+pickle.dump(X, pickle_out)
+pickle_out.close()
+
+pickle_out = open("data/kaggle_cats_and_dogs/processed_data/y.pikcle", "wb")
+pickle.dump(y, pickle_out)
+pickle_out.close()
+
+
+# %%
+
+
