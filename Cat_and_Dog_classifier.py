@@ -64,6 +64,9 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D
 
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.333)
+sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
 X = pickle.load(open("data/kaggle_cats_and_dogs/processed_data/X.pickle", "rb"))
 y = pickle.load(open("data/kaggle_cats_and_dogs/processed_data/y.pickle", "rb"))
 
