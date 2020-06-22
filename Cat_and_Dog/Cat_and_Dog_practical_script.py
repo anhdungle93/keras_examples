@@ -26,3 +26,25 @@ prediction = model.predict([prepare('cat.jpg')])
 prediction
 
 # %%
+prediction = model.predict_proba([prepare('landscape.jpg')])
+
+
+# %%
+prediction[0]
+
+# %%
+prediction[0][0]
+
+# %%
+a = [1,2,3,4,5,6,7]
+
+# %%
+index = 0
+while index <= len(a):
+    print('index', index)
+    print(len(a))
+    if a is not None:
+        del a[0]
+    index += 1
+
+# %%
