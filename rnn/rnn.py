@@ -33,5 +33,4 @@ model.compile(loss='sparse_categorical_crossentropy',
 
 model.fit(x_train, y_train, epochs=3, validation_data=(x_test, y_test))
 
-
-# %%
+#%%

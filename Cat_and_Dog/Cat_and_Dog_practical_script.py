@@ -10,8 +10,10 @@ def prepare(filepath):
     img_array = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
     new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
     return new_array.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
-
+#%%
 model = tf.keras.models.load_model("cats_and_dogs_classifier.model")
+#%%
+print(model.summary())
 #%%
 prediction = model.predict([prepare('dog.jpg')])
 
@@ -36,15 +38,41 @@ prediction[0]
 prediction[0][0]
 
 # %%
-a = [1,2,3,4,5,6,7]
+for layer in model.layers:
+    print(layer.name)
+# %%
+
+#%%
+def get_output_of_all_layers(model, test_input):
+    output_of_all_layers = []
+    for count, layer in enumerate(model.layers):
+
+        #skip the input layer
+        if count == 0:
+            continue
+        intermediate_layer_model = Model
 
 # %%
-index = 0
-while index <= len(a):
-    print('index', index)
-    print(len(a))
-    if a is not None:
-        del a[0]
-    index += 1
+from tensorflow.keras import Model
+intermediate_layer_model = Model(inputs=model.input, outputs=model.get_layer("dense_5").output)
+
+# %%
+model.input
+
+# %%
+intermediate_output = intermediate_layer_model([prepare('cat.jpg')])
+
+# %%
+import numpy as np
+np.array(intermediate_output)
+
+# %%
+model.layers
+
+# %%
+print(model.summary())
+
+# %%
+model.layers[4]
 
 # %%
