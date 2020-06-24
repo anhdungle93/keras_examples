@@ -43,14 +43,6 @@ for layer in model.layers:
 # %%
 
 #%%
-def get_output_of_all_layers(model, test_input):
-    output_of_all_layers = []
-    for count, layer in enumerate(model.layers):
-
-        #skip the input layer
-        if count == 0:
-            continue
-        intermediate_layer_model = Model
 
 # %%
 from tensorflow.keras import Model
